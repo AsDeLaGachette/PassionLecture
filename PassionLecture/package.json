@@ -13,6 +13,8 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "axios": "^1.13.5",
+    "json-server": "^0.17.4",
     "vue": "^3.5.27"
   },
   "devDependencies": {
