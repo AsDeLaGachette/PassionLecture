@@ -42,17 +42,5 @@
       "comment": "Très prenant et toujours d'actualité.",
       "date": "2026-02-10"
     }
-  ],
-  "authors": [
-    {
-      "id": 1,
-      "firstname": "Antoine",
-      "lastname": "de Saint-Exupéry"
-    },
-    {
-      "id": 2,
-      "firstname": "Orwell",
-      "lastname": "George"
-    }
   ]
 }

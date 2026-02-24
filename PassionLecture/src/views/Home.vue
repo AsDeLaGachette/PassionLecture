@@ -1,7 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
 import BookService from '@/services/BookService';
 
 const books = ref(null)
