@@ -1,10 +1,9 @@
 <script>
-import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 </script>
 
 <template>
-  <Header></Header>
   <main class="container">
     <div class="library-grid">
       <div class="library-item">
@@ -238,5 +237,4 @@ import Footer from '../components/Footer.vue'
       </div>
     </div>
   </main>
-  <Footer></Footer>
 </template>
