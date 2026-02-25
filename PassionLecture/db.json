@@ -6,6 +6,7 @@
       "year": 2026,
       "author_id": 4,
       "genre": "Comics",
+      "user_id": 1,
       "author": {
         "id": 4,
         "firstname": "Oleksandr",
@@ -21,6 +22,7 @@
       "year": 2026,
       "author_id": 2,
       "genre": "Comics",
+      "user_id": 2,
       "author": {
         "id": 2,
         "firstname": "Latif",
@@ -74,18 +76,6 @@
       "note": 4,
       "comment": "Très prenant et toujours d'actualité.",
       "date": "2026-02-10"
-    }
-  ],
-  "authors": [
-    {
-      "id": 1,
-      "firstname": "Antoine",
-      "lastname": "de Saint-Exupéry"
-    },
-    {
-      "id": 2,
-      "firstname": "Orwell",
-      "lastname": "George"
     }
   ]
 }
