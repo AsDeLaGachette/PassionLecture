@@ -19,7 +19,7 @@ onMounted(() => {
 })
 
 const openModal = (id) => {
-    bookIdToDelete.value = id
+  bookIdToDelete.value = id
   document.getElementById('deleteModal').classList.add('active')
 }
 
@@ -30,12 +30,12 @@ const closeModal = () => {
 const confirmDelete = async () => {
   try {
     await BookService.deleteBook(bookIdToDelete.value)
-    
-    userBooks.value = userBooks.value.filter(b => b.id !== bookIdToDelete.value)
-    
+
+    userBooks.value = userBooks.value.filter((b) => b.id !== bookIdToDelete.value)
+
     closeModal()
   } catch (error) {
-    console.error("Erreur suppression:", error)
+    console.error('Erreur suppression:', error)
   }
 }
 </script>
@@ -44,18 +44,28 @@ const confirmDelete = async () => {
   <main class="container">
     <h2 class="page-title-small">Mes ouvrages</h2>
     <ul class="my-works-grid">
-      <li v-for="book in userBooks" :key="book.id" class="my-work-card-wrapper">
-        <a class="my-work-card">
-          <div class="my-work-thumbnail"></div>
-        </a>
-        <div class="hover-buttons">
-          <router-link :to="{ name: 'BookDetails', params: { id: book.id } }" class="btn-details"
-            >Détails</router-link
-          >
-          <router-link :to="{ name: 'BookEdit', params: { id: book.id } }" class="btn-edit"
-            >Modifier</router-link
-          >
-          <button class="btn-delete" @click="openModal(book.id)">Supprimer</button>
+      <li v-for="book in userBooks" :key="book.id" class="book-item book-card">
+        <div class="book-thumbnail">
+          <div class="hover-buttons">
+            <router-link :to="{ name: 'BookDetails', params: { id: book.id } }" class="btn-details"
+              >Détails</router-link
+            >
+            <router-link :to="{ name: 'BookEdit', params: { id: book.id } }" class="btn-edit"
+              >Modifier</router-link
+            >
+            <button class="btn-delete" @click="openModal(book.id)">Supprimer</button>
+          </div>
+          <img :src="book.img" alt="" />
+        </div>
+        <div class="book-info">
+          <h3 class="book-title">{{ book.title }}</h3>
+          <p class="book-author">{{ book.author.firstname }} {{ book.author.lastname }}</p>
+          <div class="book-rating">
+            <span class="star-filled">★</span><span class="star-filled">★</span>
+            <span class="star-filled">★</span><span class="star-filled">★</span>
+            <span class="star-empty">☆</span>
+          </div>
+          <p class="book-meta">Vu le</p>
         </div>
       </li>
       <li class="library-item">
@@ -76,7 +86,9 @@ const confirmDelete = async () => {
         </p>
         <div class="modal-actions">
           <button class="btn-cancel" @click="closeModal()">Annuler</button>
-          <button class="btn-confirm-delete" @click="confirmDelete()">Supprimer définitivement</button>
+          <button class="btn-confirm-delete" @click="confirmDelete()">
+            Supprimer définitivement
+          </button>
         </div>
       </div>
     </div>
