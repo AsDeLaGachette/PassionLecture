@@ -6,8 +6,6 @@ import { useRouter } from 'vue-router'
 const props = defineProps(['id'])
 const bookId = props.id
 
-let imgRef = ref('')
-
 const fullName = ref('');
 
 const title = ref('')
@@ -23,7 +21,6 @@ const router = useRouter()
 onMounted(async () => {
   try {
     const response = await BookService.getBook(bookId)
-    imgRef = response.data.img
     title.value = response.data.title
     nbrPage.value = response.data.nbrPage
     fullName.value = `${response.data.author.firstname} ${response.data.author.lastname}`
