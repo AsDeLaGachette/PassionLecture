@@ -63,7 +63,7 @@ watch(
             <span class="rating-text">4.0/5</span>
           </div>
           <div class="info-text">
-            <p><strong>{{ book.author.firstname }} {{ book.author.lastname }}</strong></p>
+            <p><strong>{{ book?.author.firstname }} {{ book?.author.lastname }}</strong></p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -75,31 +75,31 @@ watch(
             <div class="quality-item">
               <h3>Description</h3>
               <p>
-                {{ book.description }}
+                {{ book?.description }}
               </p>
             </div>
             <div class="quality-item info-grid">
               <div class="info-row">
                 <span class="info-label">Nombre de pages:</span>
-                <span class="info-value"> {{ book.nbrPage }}</span>
+                <span class="info-value"> {{ book?.nbrPage }}</span>
               </div>
               <div class="info-row">
                 <span class="info-label">Catégorie:</span>
-                <span class="info-value"> {{ book.genre }}</span>
+                <span class="info-value"> {{ book?.genre }}</span>
               </div>
               <div class="info-row">
                 <span class="info-label">Année d'édition:</span>
-                <span class="info-value"> {{ book.year }}</span>
+                <span class="info-value"> {{ book?.year }}</span>
               </div>
               <div class="info-row">
                 <span class="info-label">Éditeur:</span>
-                <span class="info-value"> {{ book.publisher }}</span>
+                <span class="info-value"> {{ book?.publisher }}</span>
               </div>
             </div>
             <div class="quality-item full-width">
               <h3>Extrait</h3>
               <p class="excerpt-text">
-                {{  book.excerpt }}
+                {{  book?.excerpt }}
               </p>
             </div>
           </div>
