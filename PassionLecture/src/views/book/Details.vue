@@ -62,7 +62,6 @@ watch(
             <span class="star-empty">☆</span>
             <span class="rating-text">4.0/5</span>
           </div>
-
           <div class="quality-section">
             <div class="quality-item info-grid">
               <div class="info-row">
