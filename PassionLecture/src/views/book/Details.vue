@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import BookService from '@/services/BookService'
 
@@ -46,6 +46,20 @@ watch(
   },
   { immediate: true }
 )
+
+const averageRating = computed(() => {
+  const reviews = props.book?.reviews || []
+  let sum = 0
+
+  if (reviews.length === 0){
+    return 0
+  } 
+  for (const review of reviews) {
+    sum += review.rating
+  }
+
+  return sum / reviews.length
+})
 </script>
 
 <template>
@@ -69,11 +83,8 @@ watch(
         <div class="info-card">
           <h2>{{ book?.title }}</h2>
           <div class="detail-rating">
-            <span class="star-filled">★</span>
-            <span class="star-filled">★</span>
-            <span class="star-filled">★</span>
-            <span class="star-filled">★</span>
-            <span class="star-empty">☆</span>
+            <span class="star-filled" v-for="n in Math.floor(averageRating)" :key="'star-' + n">★</span>
+            <span class="star-empty" v-for="n in 5 - Math.floor(averageRating)" :key="'empty-' + n">☆</span>
             <span class="rating-text">4.0/5</span>
           </div>
 
