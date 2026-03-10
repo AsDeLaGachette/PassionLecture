@@ -42,12 +42,12 @@ const submitReview = async () => {
       <form class="review-form" @submit.prevent="submitReview">
         <div class="form-group">
           <label>Titre</label>
-          <input v-model="title" type="text" class="form-input" placeholder="Titre" />
+          <input v-model="title" type="text" class="form-input" placeholder="Titre" required="true"/>
         </div>
 
         <div class="form-group">
           <label>Commentaire</label>
-          <textarea v-model="comment" class="form-textarea" rows="6" placeholder="Écrivez votre avis..."></textarea>
+          <textarea v-model="comment" class="form-textarea" rows="6" placeholder="Écrivez votre avis..." required="true"></textarea>
         </div>
 
         <div class="form-group">

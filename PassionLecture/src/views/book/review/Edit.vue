@@ -1,16 +1,21 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRoute ,useRouter } from 'vue-router'
 import ReviewService from '@/services/ReviewService'
+
+const props = defineProps(['id'])
+const reviewId = props.id
 
 const title = ref('')
 const rating = ref(0)
 const comment = ref('')
 const date = ref('')
-const bookId = ref(null)
+const bookId = ref(0)
+const router = useRouter()
+
 onMounted(async () => {
   try {
-    const response = await BookService.getReview(bookId)
+    const response = await ReviewService.getReview(reviewId)
 
     title.value = response.data.title
     rating.value = response.data.rating
@@ -25,7 +30,8 @@ onMounted(async () => {
 const updateReview = async () => {
   try {
     const updatedReview = {
-      book_id: Number(bookId),
+      book_id: Number(bookId.value),
+      id: Number(reviewId),
       title: title.value,
       rating: rating.value,
       comment: comment.value,
@@ -33,14 +39,14 @@ const updateReview = async () => {
       date: new Date().toISOString().split('T')[0],
     }
 
-    await ReviewService.updateReviewReview(review.id, updatedReview)
+    await ReviewService.updateReview(reviewId, updatedReview)
 
     title.value = ''
     rating.value = ''
     comment.value = ''
     date.value = ''
 
-    router.push({ name: 'BookDetails', params: { id: bookId } })
+    router.push({ name: 'BookDetails', params: { id: bookId.value } })
   } catch (error) {
     console.error('Error creating review:', error)
   }
@@ -54,12 +60,12 @@ const updateReview = async () => {
       <form class="review-form" @submit.prevent="updateReview">
         <div class="form-group">
           <label>Titre</label>
-          <input v-model="title" type="text" class="form-input" placeholder="Titre" />
+          <input v-model="title" type="text" class="form-input" placeholder="Titre" required="true"/>
         </div>
 
         <div class="form-group">
           <label>Commentaire</label>
-          <textarea v-model="comment" class="form-textarea" rows="6" placeholder="Écrivez votre avis..."></textarea>
+          <textarea v-model="comment" class="form-textarea" rows="6" placeholder="Écrivez votre avis..."></textarea required="true">
         </div>
 
         <div class="form-group">
