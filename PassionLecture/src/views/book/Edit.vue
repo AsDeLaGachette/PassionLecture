@@ -6,9 +6,11 @@ import { useRouter } from 'vue-router'
 const props = defineProps(['id'])
 const bookId = props.id
 
+let img = ref('')
+const fullName = ref('');
+
 const title = ref('')
 const nbrPage = ref('')
-const author = ref('')
 const description = ref('')
 const genre = ref('')
 const year = ref('')
@@ -21,9 +23,10 @@ onMounted(async () => {
   try {
     const response = await BookService.getBook(bookId)
 
+    img = response.data.img
     title.value = response.data.title
     nbrPage.value = response.data.nbrPage
-    author.value = response.data.author
+    fullName.value = `${response.data.author.firstname} ${response.data.author.lastname}`
     description.value = response.data.description
     genre.value = response.data.genre
     year.value = response.data.year
@@ -37,6 +40,11 @@ onMounted(async () => {
 
 const updateBook = async () => {
   try {
+
+    const nameParts = fullName.value.trim().split(' ');
+    const firstname = nameParts[0];
+    const lastname = nameParts.slice(1).join(' ');
+
     const response = await BookService.getBook(bookId)
     const currentBook = response.data
 
@@ -44,7 +52,10 @@ const updateBook = async () => {
       ...currentBook,
       title: title.value,
       nbrPage: nbrPage.value,
-      author: author.value,
+      author: {
+      firstname: firstname,
+      lastname: lastname
+      },
       description: description.value,
       genre: genre.value,
       year: year.value,
@@ -69,7 +80,7 @@ const updateBook = async () => {
       <div class="form-left">
         <div class="upload-area">
           <div class="upload-box">
-            <div class="upload-icon">📷</div>
+            <img class :src="img" alt="">
           </div>
         </div>
       </div>
@@ -79,30 +90,30 @@ const updateBook = async () => {
           <div class="form-row">
             <div class="form-group">
               <label>Titre</label>
-              <input type="text" class="form-input" v-model="title" />
+              <input type="text" class="form-input" v-model="title" required="true"/>
             </div>
 
             <div class="form-group">
               <label>Nombre de pages</label>
-              <input type="number" class="form-input" v-model="nbrPage" />
+              <input type="number" class="form-input" v-model="nbrPage" required="true"/>
             </div>
 
             <div class="form-group">
               <label>Auteur</label>
-              <input type="text" class="form-input" v-model="author" />
+              <input type="text" class="form-input" v-model="fullName" required="true"/>
             </div>
           </div>
 
           <div class="form-group full-width">
             <label>Description</label>
-            <textarea class="form-textarea" rows="3" v-model="description"></textarea>
+            <textarea class="form-textarea" rows="3" v-model="description"></textarea required="true">
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label>Catégorie</label>
-              <select class="form-select" v-model="genre">
-                <option disabled value="">Sélectionner</option>
+              <select class="form-select" v-model="genre" required="true">
+                <option disabled value="">Sélectionner</option >
                 <option>Roman</option>
                 <option>Science-fiction</option>
                 <option>Fantastique</option>
@@ -119,18 +130,18 @@ const updateBook = async () => {
 
             <div class="form-group">
               <label>Année d'édition</label>
-              <input type="number" class="form-input" v-model="year" />
+              <input type="number" class="form-input" v-model="year" required="true"/>
             </div>
 
             <div class="form-group">
               <label>Éditeur</label>
-              <input type="text" class="form-input" v-model="publisher" />
+              <input type="text" class="form-input" v-model="publisher" required="true"/>
             </div>
           </div>
 
           <div class="form-group full-width">
             <label>Extrait</label>
-            <textarea class="form-textarea" rows="2" v-model="excerpt"></textarea>
+            <textarea class="form-textarea" rows="2" v-model="excerpt"></textarea required="true">
           </div>
             <button type="submit" class="btn-submit">Enregistrer</button>
         </form>

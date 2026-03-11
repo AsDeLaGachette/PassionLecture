@@ -1,20 +1,10 @@
 {
   "repoUrl": "https://github.com/AsDeLaGachette/PassionLecture_294",
   "projectName": "PassionLecture_294",
-  "branch": "latif",
+  "branch": "main",
   "me": "latifcodess",
   "journalStartDate": null,
   "exceptions": [
-    {
-      "id": "dbdb2660-2aa3-4302-a327-a2895d563037",
-      "type": "commitless",
-      "name": "feat(json-server): ajout json-server",
-      "description": "je me suis aidé de l'ia pour cherché les données depuis le serveur json et j'ai galeré à chercher les données des auteurs car dans les données des livres j'ai mis l'id de l'auteur donc à partir de l'id de l'auteur je devais trouver son nom et son prenom",
-      "date": "2026-02-24T14:13:00.000Z",
-      "duration": 120,
-      "status": "Done",
-      "author": "latifcodess"
-    },
     {
       "id": "d50182a4-afcc-4956-8bec-08e18627e71a",
       "type": "commitless",
@@ -26,12 +16,72 @@
       "author": "latifcodess"
     },
     {
-      "id": "c80c1ad7-d47c-457b-8b63-c55943eb7429",
+      "id": "d064d788-523a-4c4d-9382-083ff544ad07",
       "type": "commitless",
-      "name": "feat(json-server): reglage de service et de json-server",
-      "description": "le prof est venu voir notre code et nous a suggeré de modifier notre service en prenant pour exemple celui qu'il nous a donné ensuite on a modifié db.json pour afficher les auteurs plus simplement",
-      "date": "2026-02-24T15:43:00.000Z",
-      "duration": 75,
+      "name": "Image dans la page de modification",
+      "description": "j'ai commencé à ajouté l'image du livre dans la page de modification d'un livre",
+      "date": "2026-03-03T13:40",
+      "duration": 30,
+      "status": "WIP",
+      "author": "latifcodess"
+    },
+    {
+      "id": "398b8d86-6f7a-4345-9c00-c9b57b79f010",
+      "type": "commitless",
+      "name": "évaluation 80%",
+      "description": "Le prof est venu nous evalué pour le 80%, nous avons pas de rapport pour l'instant donc on a decidé de le faire pour demain et de le faire evaluer",
+      "date": "2026-03-03T14:00",
+      "duration": 20,
+      "status": "Done",
+      "author": "latifcodess"
+    },
+    {
+      "id": "a668e960-3115-4ceb-8a68-01ac9b3d2060",
+      "type": "commitless",
+      "name": "Rapport",
+      "description": "J'ai commencé le rapport en markdown mais je me suis rendu compte que je travaillais sur la mauvaise branche donc j'ai fais une manipulation pour deplacer les modification du rapport sur une nouvelle branche mais j'ai perdu le travail que j'ai fais avant (image dans page de modification)",
+      "date": "2026-03-03T14:30",
+      "duration": 30,
+      "status": "Done",
+      "author": "latifcodess"
+    },
+    {
+      "id": "2ae49573-49f3-4fb7-ac84-dbbd94c9d974",
+      "type": "commitless",
+      "name": "Image dans page de modification",
+      "description": "J'ai essayer de remettre tout ce que j'ai perdu",
+      "date": "2026-03-03T14:45",
+      "duration": 15,
+      "status": "WIP",
+      "author": "latifcodess"
+    },
+    {
+      "id": "f698bf7e-2a90-4701-8b30-b89ceea369f2",
+      "type": "commitless",
+      "name": "Image dans modification",
+      "description": "J'ai du faire une variable qui reçoit les données de l'image en fonction de l'id du livre",
+      "date": "2026-03-03T15:40",
+      "duration": 40,
+      "status": "Done",
+      "author": "latifcodess"
+    },
+    {
+      "id": "3cc342cd-148b-4f71-95fa-d4f8085c9163",
+      "type": "commitless",
+      "name": "Delete",
+      "description": "Ajout d'une fenetre modal pour confirmer la suppression",
+      "date": "2026-03-03T15:00:00.000Z",
+      "duration": 20,
+      "status": "Done",
+      "author": "latifcodess"
+    },
+    {
+      "id": "b07bef45-a334-46f6-8a59-a9036c816af5",
+      "type": "commitless",
+      "name": "Conflit git",
+      "description": "On a reglé les merge conflict",
+      "date": "2026-03-03T17:13",
+      "duration": 15,
       "status": "Done",
       "author": "latifcodess"
     }

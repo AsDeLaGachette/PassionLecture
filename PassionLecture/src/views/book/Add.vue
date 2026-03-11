@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 
 const title = ref('')
 const nbrPage = ref('')
-const author = ref('')
+const authorName = ref('')
 const description = ref('')
 const genre = ref('')
 const year = ref('')
@@ -17,10 +17,17 @@ const router = useRouter()
 
 const submitBook = async () => {
   try {
+    const nameParts = authorName.value.trim().split(' ')
+    const firstname = nameParts[0]
+    const lastname = nameParts.slice(1).join(' ')
+
     const newBook = {
       title: title.value,
       nbrPage: parseInt(nbrPage.value),
-      author: author.value,
+      author: {
+        firstname: firstname,
+        lastname: lastname
+      },
       description: description.value,
       genre: genre.value,
       year: parseInt(year.value),
@@ -34,7 +41,7 @@ const submitBook = async () => {
 
     title.value = ''
     nbrPage.value = ''
-    author.value = ''
+    authorName.value = ''
     description.value = ''
     genre.value = ''
     year.value = ''
@@ -66,17 +73,17 @@ const submitBook = async () => {
           <div class="form-row">
             <div class="form-group">
               <label>Titre</label>
-              <input type="text" class="form-input" placeholder="Titre" v-model="title" />
+              <input type="text" class="form-input" placeholder="Titre" v-model="title" required="true"/>
             </div>
 
             <div class="form-group">
               <label>Nombre de pages</label>
-              <input type="number" class="form-input" placeholder="250" v-model="nbrPage" />
+              <input type="number" class="form-input" placeholder="250" v-model="nbrPage" required="true"/>
             </div>
 
             <div class="form-group">
               <label>Auteur</label>
-              <input type="text" class="form-input" placeholder="Prénom et Nom" v-model="author" />
+              <input type="text" class="form-input" placeholder="Prénom et Nom" v-model="authorName" required="true"/>
             </div>
           </div>
 
@@ -87,13 +94,13 @@ const submitBook = async () => {
               rows="3"
               placeholder="Résumé du livre..."
               v-model="description"
-            ></textarea>
+            ></textarea required="true">
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label>Catégorie</label>
-              <select class="form-select" v-model="genre">
+              <select class="form-select" v-model="genre" required="true">
                 <option disabled value="">Sélectionner</option>
                 <option>Roman</option>
                 <option>Science-fiction</option>
@@ -111,7 +118,7 @@ const submitBook = async () => {
 
             <div class="form-group">
               <label>Année d'édition</label>
-              <input type="number" class="form-input" placeholder="aaaa" v-model="year" />
+              <input type="number" class="form-input" placeholder="aaaa" v-model="year" required="true"/>
             </div>
 
             <div class="form-group">
@@ -121,6 +128,7 @@ const submitBook = async () => {
                 class="form-input"
                 placeholder="Prénom et Nom"
                 v-model="publisher"
+                required="true"
               />
             </div>
           </div>
@@ -132,6 +140,7 @@ const submitBook = async () => {
               rows="2"
               placeholder="Extrait du livre..."
               v-model="excerpt"
+              required="true"
             ></textarea>
           </div>
             <button type="submit" class="btn-submit">Ajouter</button>
