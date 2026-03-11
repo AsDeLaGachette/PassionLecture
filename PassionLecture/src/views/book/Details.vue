@@ -3,6 +3,7 @@ import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import BookService from '@/services/BookService'
 import ReviewService from '@/services/ReviewService'
+import { getAverageRating, getStarStatus } from '@/utils/starStatus'
 
 const route = useRoute()
 const book = ref(null)
@@ -61,12 +62,12 @@ const closeModal = () => {
   document.getElementById('deleteModal').classList.remove('active')
 }
 
-window.onclick = function(event) {
-      const modal = document.getElementById("deleteModal");
-      if (event.target == modal) {
-        closeModal();
-      }
-    };
+window.onclick = function (event) {
+  const modal = document.getElementById('deleteModal')
+  if (event.target == modal) {
+    closeModal()
+  }
+}
 
 const confirmDelete = async () => {
   try {
@@ -80,19 +81,7 @@ const confirmDelete = async () => {
   }
 }
 
-const averageRating = computed(() => {
-  const reviews = props.book?.reviews || []
-  let sum = 0
 
-  if (reviews.length === 0){
-    return 0
-  } 
-  for (const review of reviews) {
-    sum += review.rating
-  }
-
-  return sum / reviews.length
-})
 </script>
 
 <template>
@@ -115,12 +104,16 @@ const averageRating = computed(() => {
       <div class="detail-right">
         <div class="info-card">
           <h2>{{ book?.title }}</h2>
-          <div class="detail-rating">
-            <span class="star-filled" v-for="n in Math.floor(averageRating)" :key="'star-' + n">★</span>
-            <span class="star-empty" v-for="n in 5 - Math.floor(averageRating)" :key="'empty-' + n">☆</span>
-            <span class="rating-text">4.0/5</span>
-          </div>
+          <div class="detail-rating" v-if="reviews.length > 0">
+            <span v-for="n in 5" :key="n" :class="getStarStatus(n, reviews)">
+              ★
+            </span>
 
+            <span class="rating-text">{{ getAverageRating(reviews).toFixed(1) }}/5</span>
+          </div>
+          <div v-else style="margin-bottom: 1rem;">
+            Aucun avis enregistré
+          </div>
           <div class="quality-section">
             <div class="quality-item info-grid">
               <div class="info-row">
@@ -182,7 +175,9 @@ const averageRating = computed(() => {
                       class="btn-review-edit"
                       >Modifier</RouterLink
                     >
-                    <button class="btn-review-delete" @click="openModal(review.id)">Supprimer</button>
+                    <button class="btn-review-delete" @click="openModal(review.id)">
+                      Supprimer
+                    </button>
                   </div>
                 </div>
                 <h4 class="review-title">{{ review.title }}</h4>

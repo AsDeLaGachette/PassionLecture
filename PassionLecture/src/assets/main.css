@@ -211,12 +211,43 @@ body {
   font-size: 1rem;
 }
 
-.star-filled {
-  color: #ffd700;
+/* Base setup for all stars */
+.star-filled, .star-empty, .star-half {
+  font-size: 24px;
+  display: inline-block;
+  position: relative;
+  width: 1em;
+  /* Use a consistent yellow for the borders/fill */
+  --star-color: #ffcc00; 
 }
 
+/* 1. Fully filled star */
+.star-filled {
+  color: var(--star-color);
+  -webkit-text-stroke: 1px var(--star-color);
+}
+
+/* 2. Empty star (Hollow with yellow border) */
 .star-empty {
-  color: #ddd;
+  color: transparent; 
+  -webkit-text-stroke: 1px var(--star-color);
+}
+
+/* 3. Half star logic */
+.star-half {
+  color: transparent; /* The "empty" right side */
+  -webkit-text-stroke: 1px var(--star-color); /* The border for the whole star */
+}
+
+.star-half::after {
+  content: '★';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%; /* Fill exactly half */
+  overflow: hidden;
+  color: var(--star-color); /* The filled color */
+  -webkit-text-stroke: 1px var(--star-color);
 }
 
 /* Library Grid */

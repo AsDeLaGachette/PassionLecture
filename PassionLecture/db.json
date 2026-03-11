@@ -16,25 +16,7 @@
       "excerpt": "Capitain dave tu est trop fort oh mon dieu. S'exclama Tif",
       "nbrPage": 67,
       "description": "Suivez les aventures de Capitaine Préverenges",
-      "img": "https://i.postimg.cc/y8kpZqL0/capprev-(1).png",
-      "reviews": [
-        {
-          "id": 1,
-          "book_id": 1,
-          "user": "Alice",
-          "rating": 5,
-          "comment": "Un classique magnifique et intemporel.",
-          "date": "2026-02-11"
-        },
-        {
-          "id": 2,
-          "book_id": 2,
-          "user": "Bob",
-          "rating": 4,
-          "comment": "Très prenant et toujours d'actualité.",
-          "date": "2026-02-10"
-        }
-      ]
+      "img": "https://i.postimg.cc/y8kpZqL0/capprev-(1).png"
     },
     {
       "id": 2,
@@ -52,25 +34,7 @@
       "publisher": "Skibidi Tif",
       "excerpt": "Tif lives matter",
       "nbrPage": 67,
-      "img": "https://i.postimg.cc/wTMpSKcb/wolvermine.jpg",
-      "reviews": [
-        {
-          "id": 1,
-          "book_id": 1,
-          "user": "Alice",
-          "rating": 5,
-          "comment": "Un classique magnifique et intemporel.",
-          "date": "2026-02-11"
-        },
-        {
-          "id": 2,
-          "book_id": 2,
-          "user": "Bob",
-          "rating": 4,
-          "comment": "Très prenant et toujours d'actualité.",
-          "date": "2026-02-10"
-        }
-      ]
+      "img": "https://i.postimg.cc/wTMpSKcb/wolvermine.jpg"
     },
     {
       "id": 3,
@@ -88,25 +52,7 @@
       "publisher": "Skibidi Tif",
       "excerpt": "Tif lives matter",
       "nbrPage": 67,
-      "img": "https://i.postimg.cc/q7XSNQxD/montagnelangue.jpg",
-      "reviews": [
-        {
-          "id": 1,
-          "book_id": 1,
-          "user": "Alice",
-          "rating": 5,
-          "comment": "Un classique magnifique et intemporel.",
-          "date": "2026-02-11"
-        },
-        {
-          "id": 2,
-          "book_id": 2,
-          "user": "Bob",
-          "rating": 4,
-          "comment": "Très prenant et toujours d'actualité.",
-          "date": "2026-02-10"
-        }
-      ]
+      "img": "https://i.postimg.cc/q7XSNQxD/montagnelangue.jpg"
     },
     {
       "id": 4,
@@ -124,25 +70,7 @@
       "publisher": "Skibidi Tif",
       "excerpt": "Tif lives matter",
       "nbrPage": 67,
-      "img": "https://i.postimg.cc/4NmDW6XX/supergoon.jpg",
-      "reviews": [
-        {
-          "id": 1,
-          "book_id": 1,
-          "user": "Alice",
-          "rating": 5,
-          "comment": "Un classique magnifique et intemporel.",
-          "date": "2026-02-11"
-        },
-        {
-          "id": 2,
-          "book_id": 2,
-          "user": "Bob",
-          "rating": 4,
-          "comment": "Très prenant et toujours d'actualité.",
-          "date": "2026-02-10"
-        }
-      ]
+      "img": "https://i.postimg.cc/4NmDW6XX/supergoon.jpg"
     },
     {
       "title": "Latif",
@@ -159,24 +87,7 @@
       "publisher": "Latif Latif",
       "excerpt": "Latif Latif Latif Latif Latif Latif Latif Latif Latif Latif Latif Latif",
       "user_id": 1,
-      "id": 5,
-      "reviews": [
-        {
-          "id": 1,
-          "book_id": 1,
-          "user": "Alice",
-          "rating": 5,
-          "comment": "Un classique magnifique et intemporel.",
-          "date": "2026-02-11"
-        },
-        {
-          "id": 2,
-          "book_id": 2,
-          "user": "Bob",
-          "comment": "Très prenant et toujours d'actualité.",
-          "date": "2026-02-10"
-        }
-      ]
+      "id": 5
     },
     {
       "title": "Arrivée de sehnan",
@@ -192,25 +103,7 @@
       "excerpt": "I'am SEHNAN !!! s'éxprima le grand Sehnan.",
       "author_id": null,
       "user_id": 1,
-      "id": 6,
-      "reviews": [
-        {
-          "id": 1,
-          "book_id": 1,
-          "user": "Alice",
-          "rating": 5,
-          "comment": "Un classique magnifique et intemporel.",
-          "date": "2026-02-11"
-        },
-        {
-          "id": 2,
-          "book_id": 2,
-          "user": "Bob",
-          "rating": 4,
-          "comment": "Très prenant et toujours d'actualité.",
-          "date": "2026-02-10"
-        }
-      ]
+      "id": 6
     },
     {
       "title": "SpiderPhile",
@@ -299,6 +192,24 @@
       "user_id": 1,
       "date": "2026-03-11",
       "id": 7
+    },
+    {
+      "book_id": 4,
+      "title": "J'adore",
+      "rating": 5,
+      "comment": "wfnaénwkfakfw",
+      "user_id": 1,
+      "date": "2026-03-11",
+      "id": 8
+    },
+    {
+      "book_id": 3,
+      "title": "vwavav",
+      "rating": 1,
+      "comment": "dwaavawvwavawva",
+      "user_id": 1,
+      "date": "2026-03-11",
+      "id": 9
     }
   ]
 }

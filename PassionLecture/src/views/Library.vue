@@ -1,49 +1,51 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
-import BookService from '@/services/BookService';
+import BookService from '@/services/BookService'
+import { getStarStatus } from '@/utils/starStatus'
+import ReviewService from '@/services/ReviewService'
 
-const books = ref(null)
+const books = ref([])
+const allReviews = ref({})
 
-onMounted(() => {
-  books.value = null
-  BookService.getBooks()
-  .then((response) => {
-    books.value = response.data
-  })
-  .catch((error) => {
-    console.log(error)
-  })
+onMounted( async () => {
+
+  const response = await BookService.getBooks()
+  books.value = response.data
+
+  for (let book of books.value) {
+    const res = await ReviewService.getReviews(book.id)
+    allReviews.value[book.id] = res.data
+  }
 })
 </script>
 
 <template>
   <main class="container">
-      <ul class="books-grid">
-        <li class="book-item" v-for="book in books" :key="book.id">
-          <RouterLink :to="{ name: 'BookDetails', params: { id: book.id } }" class="book-card">
-            <div class="book-thumbnail"><img :src="book.img" alt=""></div>
-            <div class="book-info">
-              <h3 class="book-title">{{ book.title }}</h3>
-              <p class="book-author">{{ book.author.firstname }} {{ book.author.lastname }}</p>
-              <div class="book-rating">
-                <span class="star-filled">★</span><span class="star-filled">★</span>
-                <span class="star-filled">★</span><span class="star-filled">★</span>
-                <span class="star-empty">☆</span>
-              </div>
-              <p class="book-meta">Vu le</p>
+    <ul class="books-grid">
+      <li class="book-item" v-for="book in books" :key="book.id">
+        <RouterLink :to="{ name: 'BookDetails', params: { id: book.id } }" class="book-card">
+          <div class="book-thumbnail"><img :src="book.img" alt=""/></div>
+          <div class="book-info">
+            <h3 class="book-title">{{ book.title }}</h3>
+            <p class="book-author">{{ book.author.firstname }} {{ book.author.lastname }}</p>
+            <div class="book-rating">
+              <span v-for="n in 5" :key="n" :class="getStarStatus(n, allReviews[book.id])">
+                ★
+              </span>
             </div>
-          </RouterLink>
-        </li>
-        <div class="library-item">
-          <RouterLink :to="{ name: 'BookAdd' }" class="library-card add-card">
-            <div class="library-thumbnail">
-              <span class="add-icon">+</span>
-              <span class="add-label">Ajouter</span>
-            </div>
-          </RouterLink>
-        </div>
-      </ul>
+            <p class="book-meta">Vu le</p>
+          </div>
+        </RouterLink>
+      </li>
+      <div class="library-item">
+        <RouterLink :to="{ name: 'BookAdd' }" class="library-card add-card">
+          <div class="library-thumbnail">
+            <span class="add-icon">+</span>
+            <span class="add-label">Ajouter</span>
+          </div>
+        </RouterLink>
+      </div>
+    </ul>
   </main>
 </template>

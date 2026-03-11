@@ -2,20 +2,22 @@
 import { RouterLink } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import BookService from '@/services/BookService'
+import { getStarStatus } from '@/utils/starStatus'
+import ReviewService from '@/services/ReviewService'
 
-const userBooks = ref(null)
+const userBooks = ref([])
 const userId = 1
 const bookIdToDelete = ref(null)
+const allReviews = ref({})
 
-onMounted(() => {
-  userBooks.value = null
-  BookService.getBookFromUser(userId)
-    .then((response) => {
-      userBooks.value = response.data
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+onMounted(async () => {
+  const response = await BookService.getBookFromUser(userId)
+
+  userBooks.value = response.data
+  for (let book of userBooks.value) {
+    const response = await ReviewService.getReviews(book.id)
+    allReviews.value[book.id] = response.data
+  }
 })
 
 const openModal = (id) => {
@@ -27,12 +29,12 @@ const closeModal = () => {
   document.getElementById('deleteModal').classList.remove('active')
 }
 
-window.onclick = function(event) {
-      const modal = document.getElementById("deleteModal");
-      if (event.target == modal) {
-        closeModal();
-      }
-    };
+window.onclick = function (event) {
+  const modal = document.getElementById('deleteModal')
+  if (event.target == modal) {
+    closeModal()
+  }
+}
 
 const confirmDelete = async () => {
   try {
@@ -68,9 +70,9 @@ const confirmDelete = async () => {
           <h3 class="book-title">{{ book.title }}</h3>
           <p class="book-author">{{ book.author.firstname }} {{ book.author.lastname }}</p>
           <div class="book-rating">
-            <span class="star-filled">★</span><span class="star-filled">★</span>
-            <span class="star-filled">★</span><span class="star-filled">★</span>
-            <span class="star-empty">☆</span>
+            <span v-for="n in 5" :key="n" :class="getStarStatus(n, allReviews[book.id])">
+              ★
+            </span>
           </div>
           <p class="book-meta">Vu le</p>
         </div>
