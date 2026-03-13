@@ -12,7 +12,7 @@ const booksByCategory = computed(() => {
   const grouped = {}
   
   books.value.forEach(book => {
-    const genre = book.genre || 'Non classé' 
+    const genre = book.genre || ' ' 
     
     if (!grouped[genre]) {
       grouped[genre] = []
