@@ -141,7 +141,7 @@ J’ai bien aimé participer à ce projet et travailler avec le framework Vue.js
 
 #### Conclusion de David
 
-
+J'ai apprécié le fait que le développement du projet soit principalement lié à VueJS et non à l’HTML et au CSS, grâce à l’IA. Une critique que je pourrais formuler concerne le fait que le projet AdonisJS ait été réalisé en même temps que celui-ci. Les deux frameworks se ressemblant, il était parfois confus de passer de l’un à l’autre. Les autres parties du projet, comme par exemple les maquettes ou le rapport, ne sont pas forcément toujours un plaisir à réaliser. J’ai tout de même eu beaucoup de plaisir à effectuer ce projet et les exercices réalisés en classe étaient très utiles.
 
 ### Critique de la planification
 
