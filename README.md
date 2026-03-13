@@ -75,9 +75,17 @@ Nous avons écris pleins de tâches au tout debut du projet et les avons assign�
 
 ### Structure du code
 
-Nous avons repris la structure de base en ajoutant de nouveaux fichiers .vue dans le dossier : ```PassionLecture/src/views``` pour avoir un nombre de page en corrélation avec nos maquettes. nous avons 2 services présents dans le dossier : ```PassionLecture/src/services``` un service sert à faire les requêtes HTTP pour les livres et l'autre pour les avis. Nous avons 2 components présents dans le dossier : ```PassionLecture/src/components``` qui sont le header et le footer car ils sont présent dans toute les pages. nous avons des routes présentes dans le dossier : ```PassionLecture/src/router``` qui permettent de redirigier les utilisateurs vers les differents composants en mettant par exemple sur un bouton :
+Nous avons repris la structure de base en ajoutant de nouveaux fichiers `.vue` dans le dossier : `PassionLecture/src/views` afin d’avoir un nombre de pages en corrélation avec nos maquettes.  
+
+Nous avons deux services présents dans le dossier : `PassionLecture/src/services`.  
+Un service sert à faire les requêtes HTTP pour les livres et l’autre pour les avis.  
+
+Nous avons deux composants présents dans le dossier : `PassionLecture/src/components`, qui sont le header et le footer, car ils sont présents sur toutes les pages.  
+
+Nous avons des routes présentes dans le dossier : `PassionLecture/src/router` qui permettent de rediriger les utilisateurs vers les différents composants, en mettant par exemple sur un bouton :
+
 ```html
-<router-link :to={ name: "composant" } >(Code du bouton html)</router-link>
+<router-link :to="{ name: 'composant' }">(Code du bouton HTML)</router-link>
 ```
 
 ### Analyse des routes
@@ -99,23 +107,19 @@ Nous avons repris la structure de base en ajoutant de nouveaux fichiers .vue dan
 
 ### Fonctionnalités
 
-Pour afficher les livres sur la page d'accueil, nous faisons appel à un service qui effectue une requête ```GET``` sur tous les livres, en utilisant un ```v-if``` dans la partie HTML pour afficher les 5 derniers.
+Pour afficher les livres sur la page d'accueil, nous faisons appel à un service qui effectue une requête `GET` sur tous les livres, puis nous utilisons un `v-if` dans la partie HTML pour afficher les 5 derniers.
 
-Pour afficher tous les livres, on fait simplement appel au même service qu'avant.
+Pour afficher tous les livres, nous faisons simplement appel au même service qu'auparavant.
 
-Pour ajouter un livre, on fait appel à un service qui effectue une requête ```POST```, ensuite on fait des liaisons bidirectionnelles avec des ```v-model``` sur le formulaire.
+Pour ajouter un livre, nous faisons appel à un service qui effectue une requête `POST`. Ensuite, nous faisons des liaisons bidirectionnelles avec des `v-model` sur le formulaire.
 
-Pour modifier un livre, on fait d'abord appel un service qui fait une requête ```GET``` pour recuperer les infos du livre ensuite on fait appel à un service qui effectue une requête ```PUT```, ensuite, comme avant, on fait des liaisons bidirectionnelles avec des ```v-model``` sur le formulaire.
+Pour modifier un livre, nous faisons d'abord appel à un service qui effectue une requête `GET` afin de récupérer les informations du livre. Ensuite, nous appelons un service qui effectue une requête `PUT`. Comme précédemment, nous utilisons des liaisons bidirectionnelles avec des `v-model` sur le formulaire.
 
-Pour supprimer un livre, il y a un bouton "supprimer" qui va appeler une fonction qui va non seulement ouvrir une fenêtre de confirmation, mais aussi récupérer l'ID du livre. Ensuite, le bouton "supprimer" dans la fenêtre de confirmation appelle une fonction qui fait appel à un service qui effectue une requête ```DELETE```.
+Pour supprimer un livre, il y a un bouton "Supprimer" qui appelle une fonction ouvrant une fenêtre de confirmation et récupérant l'ID du livre. Ensuite, le bouton "Supprimer" dans la fenêtre de confirmation appelle une fonction qui utilise un service effectuant une requête `DELETE`.
 
-Pour afficher les détails d'un livre, on fait appel à un service qui effectue une requête ```GET``` avec en paramètre l'ID du livre pour afficher le bon livre. Dans les détails on affiche les avis avec un service qui fait une requête ```GET```.
+Pour afficher les détails d'un livre, nous faisons appel à un service qui effectue une requête `GET` avec l'ID du livre en paramètre afin d'afficher les informations correspondantes. Dans cette page de détails, nous affichons également les avis en utilisant un service qui effectue une requête `GET`.
 
-Pour ajouter un avis et une note c'est comme pour les livres, on fait appel à un service qui fait une requête ```POST```et on fait des lisaisons bidirectionnelle avec des ```v-model``` sur le form.
-
-Pour modifier un avis on fait comme pour les livres on fait appel à un service qui fait 
-
-
+La logique pour la gestion des avis est similaire à celle des livres : nous utilisons différents services qui effectuent des requêtes HTTP (`GET`, `POST`, `PUT` et `DELETE`) afin de récupérer, ajouter, modifier ou supprimer des avis.
 
 ### Git
 
@@ -127,9 +131,18 @@ Lorsqu'un de nous termine sa tâche, il ouvre une Pull Request pour merge son co
 
 ### Conclusion générale
 
+Nous nous sommes plutôt bien débrouillés avec le framework Vue.js et l’API Composition. Malgré quelques erreurs complexes à résoudre, nous avons tout de même réussi à proposer une solution satisfaisante.
+
 ### Conclusion personnelle
 
 #### Conclusion de Latif
+
+J’ai bien aimé participer à ce projet et travailler avec le framework Vue.js. Cependant, cela m’a un peu dérangé de devoir simuler un backend avec json-server, car je pensais au départ faire uniquement du frontend durant ce projet. En effet, Vue.js semble au premier abord être un framework entièrement orienté frontend. Malgré cela, je pense m’en être globalement assez bien sorti.
+
 #### Conclusion de David
 
+
+
 ### Critique de la planification
+
+Nos tâches n'étaient pas assez précises. Nous aurions pu détailler davantage leur description dans GitHub Projects et les diviser en éléments plus petits afin de mieux structurer le travail.
