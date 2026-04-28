@@ -130,6 +130,16 @@
       "status": "WIP",
       "author": "latifcodess",
       "patch": true
+    },
+    {
+      "id": "ca0bc233-4202-4b7e-acf3-d397e2471949",
+      "type": "commitless",
+      "name": "MCD",
+      "description": "J'ai fais le MCD avec les tables books, reviews, genres, authors et users avec les bonnes relations hasMany et belongsTo",
+      "date": "2026-04-28T14:40:00.000Z",
+      "duration": 180,
+      "status": "Done",
+      "author": "latifcodess"
     }
   ]
 }
