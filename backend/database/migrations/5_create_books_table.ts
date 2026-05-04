@@ -19,6 +19,9 @@ export default class extends BaseSchema {
       // fk de authors    
       table.integer('author_id').unsigned().notNullable()
       table.foreign('author_id').references('authors.id').onDelete('CASCADE')
+      // fk de users    
+      table.integer('user_id').unsigned().notNullable()
+      table.foreign('user_id').references('users.id').onDelete('CASCADE')
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })
