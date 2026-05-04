@@ -9,6 +9,10 @@
 
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
+import BooksController from '#controllers/books_controller'
+import AuthorsController from '#controllers/authors_controller'
+import ReviewsController from '#controllers/reviews_controller'
+import AuthController from '#controllers/auth_controller'
 
 router
   .group(() => {
