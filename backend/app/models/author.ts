@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
+import Book from './book.js'
+import type { HasMany } from '@adonisjs/lucid/types/relations'
 
 export default class Author extends BaseModel {
   @column({ isPrimary: true })
@@ -10,6 +12,9 @@ export default class Author extends BaseModel {
 
   @column()
   declare lastname: string
+
+  @hasMany(() => Book) 
+  declare books: HasMany<typeof Book>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
