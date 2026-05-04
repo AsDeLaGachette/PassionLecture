@@ -5,6 +5,9 @@ export default class Genre extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare title: string
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

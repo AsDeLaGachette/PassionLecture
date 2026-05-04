@@ -12,6 +12,7 @@ export default class extends BaseSchema {
       table.integer('nbrPage')
       table.string('description')
       table.string('title')
+      table.binary('cover')
       // fk de genres
       table.integer('genre_id').unsigned().notNullable()
       table.foreign('genre_id').references('genres.id').onDelete('CASCADE')
