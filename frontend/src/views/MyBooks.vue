@@ -1,21 +1,28 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import BookService from '@/services/BookService'
 import { getStarStatus } from '@/utils/starStatus'
 import ReviewService from '@/services/ReviewService'
 
+const router = useRouter()
 const userBooks = ref([])
 const bookIdToDelete = ref(null)
 const allReviews = ref({})
 
 onMounted(async () => {
+  try {
   const response = await BookService.getBookFromUser()
 
   userBooks.value = response.data
   for (let book of userBooks.value) {
     const response = await ReviewService.getReviews(book.id)
     allReviews.value[book.id] = response.data
+  }
+  } catch (error) {
+  if (error.response?.status === 401) {
+       router.push('/login')
+    }
   }
 })
 
@@ -67,7 +74,7 @@ const confirmDelete = async () => {
         </div>
         <div class="book-info">
           <h3 class="book-title">{{ book.title }}</h3>
-          <p class="book-author">{{ book.author.firstname }} {{ book.author.lastname }}</p>
+          <p class="book-author">{{ book.author?.firstname }} {{ book.author?.lastname }}</p>
           <div class="book-rating">
             <span v-for="n in 5" :key="n" :class="getStarStatus(n, allReviews[book.id])">
               ★

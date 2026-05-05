@@ -20,16 +20,14 @@ export default class ReviewsController {
    * Handle form submission for the create action
    */
   async store({ params, request, response, auth }: HttpContext) {
-    const { title, rating, comment, bookId, userId } = await request.validateUsing(ReviewValidator)
+    const data = await request.validateUsing(ReviewValidator)
 
-    const user = auth.user
+    const user = auth.user!
 
     const review = await Review.create({
-      title,
-      rating,
-      comment,
-      bookId,
-      userId: user?.id || userId,
+      ...data,
+      bookId: params.book_id,
+      userId: user.id,
     })
 
     return response.created(review)

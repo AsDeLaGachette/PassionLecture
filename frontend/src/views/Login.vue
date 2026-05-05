@@ -1,6 +1,17 @@
 <script setup>
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
+import { ref } from 'vue'
+import AuthService from '@/services/AuthService'
+
+const form = ref({ email: '', password: '' })
+
+const onLogin = async () => {
+  try {
+    await AuthService.login(form.value)
+    window.location.href = '/'
+  } catch (err) {
+    console.error('Login error:', err)
+  }
+}
 </script>
 
 <template>
@@ -8,15 +19,15 @@ import Footer from '@/components/Footer.vue'
         <div class="auth-card">
             <h2 class="auth-title">Connexion</h2>
             
-            <form class="auth-form">
-                <div class="form-group">
+            <form class="auth-form" @submit.prevent="onLogin">
+                <div class="form-group" >
                     <label>Email</label>
-                    <input type="email" class="form-input" placeholder="Exemple123@eduvaud.ch">
+                    <input v-model="form.email" type="email" class="form-input" placeholder="Exemple123@eduvaud.ch" required>
                 </div>
 
                 <div class="form-group">
                     <label>Mot de passe</label>
-                    <input type="password" class="form-input" placeholder="••••••••••••••••">
+                    <input v-model="form.password" type="password" class="form-input" placeholder="••••••••••••••••" required>
                 </div>
 
                 <div class="auth-links">
