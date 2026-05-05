@@ -9,10 +9,10 @@ export default class extends BaseSchema {
       table.integer('year')
       table.string('publisher')
       table.string('excerpt')
-      table.integer('nbrPage')
+      table.integer('nbr_page')
       table.string('description')
       table.string('title')
-      table.binary('cover')
+      table.specificType('cover', 'LONGBLOB')
       // fk de genres
       table.integer('genre_id').unsigned().notNullable()
       table.foreign('genre_id').references('genres.id').onDelete('CASCADE')
