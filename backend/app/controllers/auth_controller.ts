@@ -8,9 +8,9 @@ export default class AuthController {
    */
   async login({ request, response }: HttpContext) {
     // Validation du nom d'utilisateur et mot de passe
-    const { username, password } = await request.validateUsing(loginValidator)
+    const { email, password } = await request.validateUsing(loginValidator)
     // Vérification qu'un utilisateur existe avec ce nom d'utilisateur et ce mot de passe
-    const user = await User.verifyCredentials(username, password)
+    const user = await User.verifyCredentials(email, password)
     // Génération d'un token OAT
     const token = await User.accessTokens.create(user)
     // Retourne le token et les infos utilisateurs
