@@ -10,8 +10,8 @@ export default class extends BaseSchema {
       table.integer('rating')
       table.string('comment')
       // fk de users
-      table.integer('users_id').unsigned().notNullable()
-      table.foreign('users_id').references('users.id').onDelete('CASCADE')
+      table.integer('user_id').unsigned().notNullable()
+      table.foreign('user_id').references('users.id').onDelete('CASCADE')
       // fk de books
       table.integer('book_id').unsigned().notNullable()
       table.foreign('book_id').references('books.id').onDelete('CASCADE')

@@ -9,6 +9,9 @@
 
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
+import BooksController from '#controllers/books_controller'
+import AuthorsController from '#controllers/authors_controller'
+import ReviewsController from '#controllers/reviews_controller'
 
 router
   .group(() => {
@@ -22,7 +25,7 @@ router
           })
           .prefix('books/:book_id')
       })
-      .use(middleware.auth())
+      /*.use(middleware.auth())
 
     router
       .group(() => {
@@ -30,6 +33,6 @@ router
         router.post('login', [AuthController, 'login'])
         router.post('logout', [AuthController, 'logout']).use(middleware.auth())
       })
-      .prefix('user')
+      .prefix('user')*/
   })
   .prefix('api')
