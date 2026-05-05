@@ -1336,3 +1336,8 @@ button.btn-review-delete {
   color: #0056b3;
   text-decoration: underline;
 }
+
+button {
+  background: none;
+  border: none;
+}

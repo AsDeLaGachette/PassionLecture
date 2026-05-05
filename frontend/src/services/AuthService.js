@@ -15,6 +15,7 @@ export default {
   },
 
   logout() {
+    apiClient.post(`/user/logout`)
     localStorage.removeItem('auth_token')
   },
 }

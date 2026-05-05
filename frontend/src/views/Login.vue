@@ -1,15 +1,13 @@
 <script setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import AuthService from '@/services/AuthService'
 
-const router = useRouter()
 const form = ref({ email: '', password: '' })
 
 const onLogin = async () => {
   try {
     await AuthService.login(form.value)
-    router.push('/')
+    window.location.href = '/'
   } catch (err) {
     console.error('Login error:', err)
   }

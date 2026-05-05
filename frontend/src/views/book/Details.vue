@@ -22,7 +22,7 @@ async function loadBook(id) {
 async function loadNextImages(currentId) {
   try {
     const res = await BookService.getBooks()
-
+  
     const others = res.data.filter(book => book.id !== Number(currentId))
 
     nextImages.value = others.slice(0, 3).map(book => ({
