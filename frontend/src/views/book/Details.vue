@@ -20,26 +20,17 @@ async function loadBook(id) {
 }
 
 async function loadNextImages(currentId) {
-  nextImages.value = []
+  try {
+    const res = await BookService.getBooks()
 
-  for (let i = 1; i <= 3; i++) {
-    const id = Number(currentId) + i
-    const res = await BookService.getBook(id)
-    if (res.data?.img) {
-      nextImages.value.push({ id: res.data.id, img: res.data.img })
-      if (nextImages.value.length >= 3) return
-    }
-  }
+    const others = res.data.filter(book => book.id !== Number(currentId))
 
-  let fallback = 1
-  while (nextImages.value.length < 3 && fallback < 100) {
-    if (fallback !== Number(currentId)) {
-      const res = await BookService.getBook(fallback)
-      if (res.data?.img) {
-        nextImages.value.push({ id: res.data.id, img: res.data.img })
-      }
-    }
-    fallback++
+    nextImages.value = others.slice(0, 3).map(book => ({
+      id: book.id,
+      img: book.img
+    }))
+  } catch (error) {
+    console.error(error)
   }
 }
 
@@ -119,7 +110,7 @@ const confirmDelete = async () => {
               <div class="info-row">
                 <span class="info-label">Auteur:</span>
                 <span class="info-value"
-                  >{{ book?.author.firstname }} {{ book?.author.lastname }}</span
+                  >{{ book.author?.firstname }} {{ book.author?.lastname }}</span
                 >
               </div>
               <div class="info-row">

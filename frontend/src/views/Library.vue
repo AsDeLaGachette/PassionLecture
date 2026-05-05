@@ -24,12 +24,15 @@ const booksByCategory = computed(() => {
 })
 
 onMounted( async () => {
+  try {
   const response = await BookService.getBooks()
   books.value = response.data
-
   for (let book of books.value) {
     const res = await ReviewService.getReviews(book.id)
     allReviews.value[book.id] = res.data
+  }
+  } catch (err) {
+    console.error(err)
   }
 })
 </script>
@@ -49,7 +52,7 @@ onMounted( async () => {
             </div>
             <div class="book-info">
               <h3 class="book-title">{{ book.title }}</h3>
-              <p class="book-author">{{ book.author.firstname }} {{ book.author.lastname }}</p>
+              <p class="book-author">{{ book.author?.firstname }} {{ book.author?.lastname }}</p>
               <div class="book-rating">
                 <span v-for="n in 5" :key="n" :class="getStarStatus(n, allReviews[book.id])">
                   ★

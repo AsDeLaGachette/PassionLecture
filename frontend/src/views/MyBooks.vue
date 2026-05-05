@@ -6,12 +6,11 @@ import { getStarStatus } from '@/utils/starStatus'
 import ReviewService from '@/services/ReviewService'
 
 const userBooks = ref([])
-const userId = 1
 const bookIdToDelete = ref(null)
 const allReviews = ref({})
 
 onMounted(async () => {
-  const response = await BookService.getBookFromUser(userId)
+  const response = await BookService.getBookFromUser()
 
   userBooks.value = response.data
   for (let book of userBooks.value) {

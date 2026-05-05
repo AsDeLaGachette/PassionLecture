@@ -25,7 +25,10 @@ export default class BooksController {
    * Show individual record
    */
   async show({ params }: HttpContext) {
-    const book = await Book.findOrFail(params.id)
+    const book = await Book.query()
+      .where('id', params.id)
+      .preload('author')
+      .firstOrFail()
     return book
   }
 
@@ -47,5 +50,20 @@ export default class BooksController {
   async destroy({ params }: HttpContext) {
     const book = await Book.findOrFail(params.id)
     return book.delete()
+  }
+
+  /**
+   * Get books from user
+   */
+  async getMyBooks({ auth, response }: HttpContext) {
+    const user = auth.user
+
+    if (!user) {
+      return response.unauthorized('skibidilatif')
+    }
+
+    const books = await user.related('books').query()
+
+    return books
   }
 }

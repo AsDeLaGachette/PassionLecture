@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'http://localhost:3333/api',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -16,8 +16,8 @@ export default {
   getBook(id) {
     return apiClient.get(`/books/${id}`)
   },
-  getBookFromUser(userId) {
-    return apiClient.get(`/user/${userId}/books`)
+  getBookFromUser() {
+    return apiClient.get(`/me/books`)
   },
   addBook(book) {
     return apiClient.post('/books', book)
