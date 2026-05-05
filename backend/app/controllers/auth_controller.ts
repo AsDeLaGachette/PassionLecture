@@ -23,13 +23,17 @@ export default class AuthController {
   /**
    * Display form to create a new record
    */
-  async register({ request, response }: HttpContext) {
+  async register({ request, response, auth }: HttpContext) {
     // Validation des données utilisateurs
     const payload = await request.validateUsing(registerValidator)
     // Création de l'utilisateur
     const user = await User.create(payload)
+    const token = await User.accessTokens.create(user)
     // Retourne les données utilisateurs
-    return response.created(user)
+    return response.created({
+      user,
+      token: token,
+    })
   }
 
   /**
