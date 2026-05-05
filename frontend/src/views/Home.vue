@@ -31,14 +31,14 @@ onMounted( async () => {
       <ul class="books-grid">
         <li class="book-item" v-for="(book, index) in books" :key="index">
           <RouterLink
-            v-if="index < 5"
+            v-if="index < 5 && book.id"
             :to="{ name: 'BookDetails', params: { id: book.id } }"
             class="book-card"
           >
             <div class="book-thumbnail"><img :src="book.img" alt="" /></div>
             <div class="book-info">
               <h3 class="book-title">{{ book.title }}</h3>
-              <p class="book-author">{{ book.author.firstname }} {{ book.author.lastname }}</p>
+              <p class="book-author">{{ book.author?.firstname }} {{ book.author?.lastname }}</p>
               <div class="book-rating">
                 <span v-for="n in 5" :key="n" :class="getStarStatus(n, allReviews[book.id])">
                   ★

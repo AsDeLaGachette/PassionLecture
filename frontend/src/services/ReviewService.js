@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'http://localhost:3333/api',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -11,7 +11,7 @@ const apiClient = axios.create({
 
 export default {
   getReviews(bookId) {
-    return apiClient.get(`/reviews?book_id=${bookId}`)
+    return apiClient.get(`/books/${bookId}/reviews`)
   },
   getReview(reviewId) {
     return apiClient.get(`/reviews/${reviewId}`)
