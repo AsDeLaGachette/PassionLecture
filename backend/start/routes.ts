@@ -16,9 +16,10 @@ import AuthController from '#controllers/auth_controller'
 
 router
   .group(() => {
-    router.resource('books', BooksController).apiOnly()
+    router.resource('books', BooksController).apiOnly().use(['update', 'store', 'destroy'], middleware.auth())
     router.resource('authors', AuthorsController).apiOnly()
     router.get('/me/books', [BooksController, 'getMyBooks']).use(middleware.auth())
+    router.get('/books/:id/cover', [BooksController, 'getCover'])
     router
       .group(() => {
         router
